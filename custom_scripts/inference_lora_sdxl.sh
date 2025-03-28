@@ -11,14 +11,17 @@ if [ -z "$DATASET_ID" ]; then
     DATASET_ID="42"
 fi
 
-if [ -z "$COUNTER" ]; then
-    export COUNTER=0
-fi
-
-export COUNTER=$((COUNTER + 1))
-echo "Counter has been incremented to: $COUNTER"
-# 格式化为3位数字
-FORMATTED_COUNTER=$(printf "%03d" $COUNTER)
+counter_file="$HOME/.counter"
+# 确保计数器文件存在
+[ ! -f "$counter_file" ] && echo "0" > "$counter_file"
+# 读取当前值并加1
+current=$(cat "$counter_file")
+new_value=$((current + 1))
+# 保存新值并导出环境变量
+echo "$new_value" > "$counter_file"
+export COUNTER="$new_value"
+# 可选：打印当前值
+echo "COUNTER 已更新为：$COUNTER"
 
 # 获取当前日期，格式为月份和日期（两位数），例如 0328
 CURRENT_DATE=$(date +%m%d)
