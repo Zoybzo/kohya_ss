@@ -40,5 +40,5 @@ $MHOME/Projects/kohya_ss/venv/bin/accelerate launch \
   --num_cpu_threads_per_process 2 \
   $MHOME/Projects/kohya_ss/sd-scripts/sdxl_train_network.py \
   --train_data_dir "$DATASET_HOME/kafka_official_p$DATASET_ID" \
-  --output_name "test-${DATE_VAR}-${FORMATTED_COUNTER}-sdxl_base_1.0-p$DATASET_ID" \
+  --output_name "test-${DATE_VAR}-${COUNTER}-sdxl_base_1.0-p$DATASET_ID" \
   --config_file custom_configs/config_lora_sdxl-base-1.0_ai-char-1.1.toml
