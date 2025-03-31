@@ -59,4 +59,4 @@ training_comment = "3 repeats. More info: https://civitai.com/articles/1771"
 unet_lr = 3e-5
 wandb_api_key = "931005d73a216751278fcd6696ba7f51dd632f34"
 xformers = true
-main_process_port = 0
+# main_process_port = 0

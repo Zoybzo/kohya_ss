@@ -37,6 +37,7 @@ $MHOME/Projects/kohya_ss/venv/bin/accelerate launch \
   --mixed_precision fp16 \
   --num_processes 1 \
   --num_machines 1 \
+  --main_process_port 0 \
   --num_cpu_threads_per_process 2 \
   $MHOME/Projects/kohya_ss/sd-scripts/sdxl_train_network.py \
   --train_data_dir "$DATASET_HOME/kafka_official_p$DATASET_ID" \
