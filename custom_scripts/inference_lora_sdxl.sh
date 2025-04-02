@@ -2,6 +2,7 @@
 # 读取参数
 GPU_ID=$1
 DATASET_ID=$2
+DATASET_PREFIX=$3
 # 检查参数是否为空，并设置默认值
 if [ -z "$GPU_ID" ]; then
     GPU_ID="6"
@@ -9,6 +10,10 @@ fi
 
 if [ -z "$DATASET_ID" ]; then
     DATASET_ID="42"
+fi
+
+if [ -z "$DATASET_PREFIX" ]; then
+    DATASET_PREFIX="kafka_official"
 fi
 
 counter_file="$HOME/.counter"
@@ -40,6 +45,6 @@ $MHOME/Projects/kohya_ss/venv/bin/accelerate launch \
   --main_process_port 0 \
   --num_cpu_threads_per_process 2 \
   $MHOME/Projects/kohya_ss/sd-scripts/sdxl_train_network.py \
-  --train_data_dir "$DATASET_HOME/kafka_official_p$DATASET_ID" \
+  --train_data_dir "$DATASET_HOME/${DATASET_PREFIX}_p$DATASET_ID" \
   --output_name "test-${DATE_VAR}-${COUNTER}-sdxl_base_1.0-p$DATASET_ID" \
   --config_file custom_configs/config_lora_sdxl-base-1.0_ai-char-1.1.toml
